@@ -1,0 +1,21 @@
+{
+  "session_date": "2025-12-08T00:46:26.909335",
+  "mode": "Freestyle",
+  "activity": null,
+  "performance": {
+    "total_reps": 0
+  },
+  "gait_metrics": {
+    "cadence_spm": 0.0,
+    "symmetry_index": null,
+    "step_time_left": null,
+    "step_time_right": null
+  },
+  "system_info": {
+    "model": "MediaPipe",
+    "input_resolution": [
+      1280,
+      720
+    ]
+  }
+}

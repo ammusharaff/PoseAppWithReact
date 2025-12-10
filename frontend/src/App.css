@@ -1,0 +1,395 @@
+/* frontend/src/App.css */
+
+:root {
+  /* --- Color Palette (Dark Theme) --- */
+  --bg-color: #121212;          /* Very dark grey/black background */
+  --surface-color: #1e1e1e;     /* Slightly lighter for cards/panels */
+  --border-color: #333333;      /* Subtle borders */
+  
+  --primary-color: #3b82f6;     /* Bright Blue for primary actions/text */
+  --success-color: #10b981;     /* Green for "Start" / Good scores */
+  --danger-color: #ef4444;      /* Red for "Stop" / Bad scores */
+  --amber-color: #f59e0b;       /* Amber for warnings/phases */
+  
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;    /* Light grey for labels */
+  
+  --border-radius: 12px;        /* Smooth corners */
+  --spacing: 20px;
+}
+
+/* --- Global Reset & Body --- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  height: 100vh;
+  overflow: hidden; /* Prevent full page scroll; individual panels scroll if needed */
+}
+
+/* --- Main App Container --- */
+.pose-app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* --- 1. Toolbar (Top Header) --- */
+.app-toolbar {
+  background-color: var(--surface-color);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0; /* Never shrink */
+}
+
+.app-toolbar h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: -0.025em;
+}
+
+.status-indicator {
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* --- 2. Dashboard Grid Layout --- */
+.dashboard-layout {
+  display: grid;
+  /* UPDATED: Equal width for Camera and Analytics (50% / 50%) */
+  grid-template-columns: 1fr 1fr; 
+  gap: var(--spacing);
+  padding: var(--spacing);
+  flex: 1; 
+  overflow: hidden; 
+}
+
+/* --- LEFT PANE (Controls + Camera) --- */
+.left-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Control Bar (Selectors above Camera) */
+.control-bar {
+  background-color: var(--surface-color);
+  padding: 12px 20px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap; /* Wrap on small screens */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.control-group label {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Video Container */
+.video-container {
+  flex: 1; /* Grow to fill remaining height */
+  background-color: #000;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.video-canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensure aspect ratio is preserved */
+  display: block;
+}
+
+.video-placeholder {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* --- RIGHT PANE (Analytics & Charts) --- */
+.right-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 100%;
+  overflow-y: auto; /* Scroll if content overflows */
+  padding-right: 4px; /* Space for scrollbar */
+}
+
+/* Custom Scrollbar for Right Pane */
+.right-pane::-webkit-scrollbar { width: 6px; }
+.right-pane::-webkit-scrollbar-track { background: transparent; }
+.right-pane::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+/* Analytics Cards */
+.analytics-card {
+  background-color: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.analytics-card h2 {
+  margin: 0 0 15px 0;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+/* Guided Mode Styling */
+.guided-active {
+  border-left: 4px solid var(--primary-color);
+  background: linear-gradient(90deg, rgba(59,130,246,0.05) 0%, var(--surface-color) 100%);
+}
+
+.guided-details h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.rep-counter {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin: 10px 0;
+  text-align: center;
+}
+
+.phase-badge {
+  display: inline-block;
+  background-color: #333;
+  color: var(--amber-color);
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+.feedback-box {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Metrics Table Styling */
+.metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px dashed #333;
+}
+.metric-row:last-child { border-bottom: none; }
+
+.metric-value {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* --- UI Elements: Buttons & Selects --- */
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  padding: 8px 16px;
+  transition: opacity 0.2s;
+}
+button:hover { opacity: 0.9; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.start-btn { background-color: var(--success-color); color: #000; }
+.stop-btn { background-color: var(--danger-color); color: #fff; }
+.export-btn { 
+  background-color: transparent; 
+  border: 1px solid var(--border-color); 
+  color: var(--text-primary); 
+  margin-left: auto; /* Push to far right */
+}
+.export-btn:hover { background-color: #333; }
+
+select {
+  background-color: #2a2a2a;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  outline: none;
+}
+select:focus { border-color: var(--primary-color); }
+
+/* --- Footer --- */
+.status-footer {
+  background-color: var(--surface-color);
+  border-top: 1px solid var(--border-color);
+  padding: 6px 20px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-align: right;
+  font-family: monospace;
+}
+
+/* UPDATED: Guided Mode Layout */
+.guided-row {
+  display: flex;
+  align-items: center; /* Vertically center items */
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.guided-info {
+  flex: 1; /* Text takes available space */
+}
+
+.guided-media {
+  flex: 1; /* GIF takes available space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.guided-media img {
+  width: 100%;
+  max-width: 250px; /* Allow it to get much bigger */
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #444;
+  object-fit: cover;
+}
+
+.rep-counter {
+  font-size: 3.5rem; /* Make the number huge */
+  font-weight: 800;
+  color: var(--primary-color);
+  margin: 5px 0;
+  line-height: 1;
+}
+
+.phase-container {
+  margin-top: 10px;
+}
+
+/* ... (Existing CSS) ... */
+
+/* --- Modal Overlay --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background-color: var(--surface-color);
+  width: 90%;
+  max-width: 500px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--primary-color);
+  padding: 30px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 15px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 25px 0;
+  text-align: left;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-item label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.summary-item span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.modal-actions {
+  margin-top: 20px;
+}
+
+.close-btn {
+  background-color: var(--primary-color);
+  color: white;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+}
+.close-btn:hover {
+  background-color: #2563eb;
+}

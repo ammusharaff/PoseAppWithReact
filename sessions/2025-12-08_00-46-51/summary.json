@@ -1,0 +1,21 @@
+{
+  "session_date": "2025-12-08T00:46:55.738989",
+  "mode": "Freestyle",
+  "activity": null,
+  "performance": {
+    "total_reps": 0
+  },
+  "gait_metrics": {
+    "cadence_spm": 202.29388041860963,
+    "symmetry_index": 0.0,
+    "step_time_left": 0.2965981960296631,
+    "step_time_right": 0.2965981960296631
+  },
+  "system_info": {
+    "model": "MoveNet_Lightning",
+    "input_resolution": [
+      1280,
+      720
+    ]
+  }
+}

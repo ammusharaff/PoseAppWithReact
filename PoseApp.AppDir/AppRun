@@ -1,0 +1,10 @@
+#!/bin/bash
+# Get the directory where the script is located (inside the mounted AppImage)
+HERE="$(dirname "$(readlink -f "${0}")")"
+
+# Set library path to look inside the AppImage's lib folder (PyInstaller puts them in /usr/bin or _internal)
+# For one-dir mode, PyInstaller puts libs in the same folder as the executable or in _internal
+export LD_LIBRARY_PATH="${HERE}/usr/bin:${HERE}/usr/bin/_internal:${LD_LIBRARY_PATH}"
+
+# Execute the binary
+exec "${HERE}/usr/bin/poseapp" "$@"

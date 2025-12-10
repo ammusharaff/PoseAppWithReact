@@ -1,0 +1,15 @@
+timestamp,joint,angle
+3.863,elbow_L_flex,174.6
+4.951,trunk_tilt,177.1
+6.334,trunk_tilt,177.7
+7.223,trunk_tilt,178.5
+8.406,trunk_tilt,177.7
+8.506,trunk_tilt,178.5
+9.198,trunk_tilt,179.1
+6.334,shoulder_R_abd,19.1
+8.406,shoulder_R_abd,37.1
+8.506,shoulder_R_abd,38.1
+9.198,shoulder_R_abd,38.0
+6.334,neck_flex,2.2
+7.223,neck_flex,2.2
+8.406,neck_flex,0.2
