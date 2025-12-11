@@ -1,0 +1,22 @@
+{
+  "session_date": "2025-12-10T21:54:27.513368",
+  "mode": "Guided",
+  "activity": "arm_abduction",
+  "performance": {
+    "total_reps": 6,
+    "sets_completed": 2
+  },
+  "gait_metrics": {
+    "cadence_spm": 0.0,
+    "symmetry_index": null,
+    "step_time_left": null,
+    "step_time_right": null
+  },
+  "system_info": {
+    "model": "MediaPipe",
+    "input_resolution": [
+      1280,
+      720
+    ]
+  }
+}

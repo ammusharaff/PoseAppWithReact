@@ -1,0 +1,22 @@
+{
+  "session_date": "2025-12-11T16:32:46.617815",
+  "mode": "Guided",
+  "activity": "squat",
+  "performance": {
+    "total_reps": 0,
+    "sets_completed": 1
+  },
+  "gait_metrics": {
+    "cadence_spm": 52.351396279292885,
+    "symmetry_index": 140.5294735214761,
+    "step_time_left": 0.34079551696777344,
+    "step_time_right": 1.9514069557189941
+  },
+  "system_info": {
+    "model": "MoveNet_Thunder",
+    "input_resolution": [
+      1280,
+      720
+    ]
+  }
+}

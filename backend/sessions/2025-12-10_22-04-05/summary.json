@@ -1,0 +1,22 @@
+{
+  "session_date": "2025-12-10T22:04:25.844330",
+  "mode": "Guided",
+  "activity": "arm_abduction",
+  "performance": {
+    "total_reps": 0,
+    "sets_completed": 1
+  },
+  "gait_metrics": {
+    "cadence_spm": 0.0,
+    "symmetry_index": null,
+    "step_time_left": null,
+    "step_time_right": null
+  },
+  "system_info": {
+    "model": "MoveNet_Thunder",
+    "input_resolution": [
+      1280,
+      720
+    ]
+  }
+}
